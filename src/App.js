@@ -1,11 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import Invoice from './components/Invoice.js'
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <Invoice/>
   );
 }
 export default App;
