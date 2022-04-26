@@ -13,7 +13,10 @@ export class Home extends Component {
         <Container>
         <div class='content'>
             <h1>Welcome to Life of Pie Bakery</h1>
+            <br />
             <img src={lion}></img>
+            <br />
+            <br />
             <p>We have all your bakery needs! Using the freshest ingredients, we offer various pastries, pies, and muffins for all occasions!</p>
         </div>
 
@@ -44,7 +47,7 @@ export class Home extends Component {
         </div>
         </div>
         <br />
-        <button class="btn btn-link">
+        <button class="btn btn-link" href="#products">
             Order Today!
           </button>
         </Container>
