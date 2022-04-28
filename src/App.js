@@ -1,10 +1,13 @@
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.css';
-import Invoice from './components/Invoice.js'
+import { Home } from './components/Home';
+import MyNav from './components/MyNav';
 
 function App() {
   return (
-    <Invoice/>
+    <div className="App">
+      <MyNav />
+      <Home />
+    </div>
   );
 }
 export default App;
