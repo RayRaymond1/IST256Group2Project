@@ -3,79 +3,106 @@
         "name": "Pumpkin Pie",
         "price" : 12.99,
         "calories" : 323,
+        "image": "/assets/images/pumpkinPie.jpg",
         "id" : 1
     },
     {
         "name": "Apple Pie",
         "price" : 10.99,
         "calories" : 296,
+        "image": "/assets/images/applePie.jpg",
         "id" : 2
     },
     {
         "name": "Cherry Pie",
         "price" : 9.99,
         "calories" : 486,
+        "image": "/assets/images/cherryPie.jpg",
         "id" : 3
     },
     {
         "name": "Pecan Pie",
         "price" : 12.99,
         "calories" : 503,
+        "image": "/assets/images/pecanPie.jpg",
         "id" : 4
     },
     {
         "name": "Key Lime Pie",
         "price" : 12.99,
         "calories" : 364,
+        "image": "/assets/images/keyLimePie.jpg",
         "id" : 5
     },
     {
         "name": "Banana Cream Pie",
         "price" : 12.99,
         "calories" : 387,
+        "image": "/assets/images/bananaCreamPie.jpg",
         "id" : 6
     },
     {
         "name": "Blackberry Pie",
         "price" : 9.99,
         "calories" : 393,
+        "image": "/assets/images/blackberryPie.jpg",
         "id" : 7
     },
     {
         "name": "Blueberry Pie",
         "price" : 9.99,
         "calories" : 360,
+        "image": "/assets/images/blueberryPie.jpg",
         "id" : 8
     },
     {
         "name": "Chiffon Pie",
         "price" : 12.99,
         "calories" : 289,
+        "image": "/assets/images/chiffonPie.jpg",
         "id" : 9
     },
     {
         "name": "Coconut Cream Pie",
         "price" : 11.99,
         "calories" : 429,
+        "image": "/assets/images/coconutCreamPie.jpg",
         "id" : 10
     },
     {
         "name": "Raspberry Pie",
         "price" : 9.99,
         "calories" : 422,
+        "image": "/assets/images/raspberryPie.jpg",
         "id" : 11
     },
     {
         "name": "Strawberry Pie",
         "price" : 9.99,
         "calories" : 410,
+        "image": "/assets/images/strawberryPie.jpg",
         "id" : 12
     },
     {
         "name": "Mint Chocolate Chip Pie",
         "price" : 12.99,
         "calories" : 579,
+        "image": "/assets/images/mintChocolateChipPie.jpg",
         "id" : 13
+    },
+    {
+        "name": "Chocolate Chip Muffin",
+        "price" : 3.99,
+        "calories" : 364,
+        "image": "/assets/images/chocolateChipMuffin.jpg",
+        "id" : 14
+    },
+    {
+        "name": "Banana Nut Muffin",
+        "price" : 4.99,
+        "calories" : 290,
+        "image": "/assets/images/bananaNutMuffin.jpg",
+        "id" : 15
     }
 ]
 
