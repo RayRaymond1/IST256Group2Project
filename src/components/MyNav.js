@@ -7,9 +7,9 @@ import tiger from '../images/tiger.png';
 export default class MyNav extends Component {
   render() {
     return (
-      <Navbar bg="light" expand="lg" sticky="top" variant="dark">
+      <Navbar bg="dark" expand="lg" sticky="top" variant="dark">
         <Container>
-          <Navbar.Brand href='#home'>
+          <Navbar.Brand href='/home'>
             <img src={tiger} width="auto" height="100"></img>
           </Navbar.Brand>
           <Navbar.Brand>
@@ -18,9 +18,9 @@ export default class MyNav extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#products">Products</Nav.Link>
-              <Nav.Link href="#cart">Shopping Cart</Nav.Link>
+              <Nav.Link href="/home">Home</Nav.Link>
+              <Nav.Link href="/products">Products</Nav.Link>
+              <Nav.Link href="/cart">Shopping Cart</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

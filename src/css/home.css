@@ -9,20 +9,33 @@
 h1, p, h2, h3, h5 {
     color: rgb(234, 114, 34);
     font-family: 'Dancing Script', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
 }
 
-h5 {
-    font-size: x-large;
-    font-weight: bolder;
+
+.card-title {
+    font-size: xx-large;
     text-decoration: underline;
+    font-weight: bolder;
 }
 
 p {
     font-size:x-large;
 }
 
-.card {
-    background-color: black;
+.pie {
+    display: flex;
+    justify-content: center;
+}
+
+
+.lion {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    text-align: center;
 }
 
 * {
