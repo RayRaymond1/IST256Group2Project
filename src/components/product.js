@@ -7,13 +7,13 @@ export default function Product(props){
             <Card.Img variant="top" src= {props.image}/>
             <Card.Body>
             <Card.Text>
-            <p>{props.name}</p>
+            {props.name}
             </Card.Text>
             <Card.Text>
-            <p>${props.price}</p>
+            ${props.price}
             </Card.Text>
             <Card.Text>
-            <p>Calories: {props.calories}</p>
+            Calories: {props.calories}
             </Card.Text>
             <Button variant="primary" onClick={console.log(props.id)}>Add to Cart</Button>
             </Card.Body>
