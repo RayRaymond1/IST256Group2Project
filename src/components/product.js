@@ -15,7 +15,7 @@ export default function Product(props){
             <Card.Text>
             Calories: {props.calories}
             </Card.Text>
-            <Button variant="primary" onClick={console.log(props.id)}>Add to Cart</Button>
+            <Button variant="primary" onClick={() => {props.add(props.id)}}>Add to Cart</Button>
             </Card.Body>
         </Card>
     </div>

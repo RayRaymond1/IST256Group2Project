@@ -4,6 +4,7 @@ import { Home } from './components/Home.js';
 import ProductList from './components/productList';
 import MyNav from './components/MyNav';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Cart from './components/cart';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
             <Route path='/products' element={<ProductList />} />
             <Route path='' element={<Home />} />
             <Route path='/home' element={<Home />} />
-            <Route path='/cart' /> //add cart element
+            <Route path='/cart'  element={<Cart />}/> //add cart element
           </Routes>
         </BrowserRouter>
     </div>
