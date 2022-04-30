@@ -1,9 +1,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Home } from './components/Home.js';
-import Invoice from './components/Invoice.js'
 import ProductList from './components/productList';
-import Product from './components/product';
 import MyNav from './components/MyNav';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
