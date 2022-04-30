@@ -12,10 +12,10 @@ export class Home extends Component {
     render() {
       return (
         <Container>
-        <div class='content'>
+        <div className='content'>
             <h1>Welcome to Life of Pie Bakery</h1>
             <br />
-            <div class='lion'>
+            <div className='lion'>
               <img src={lion}></img>
             </div>
             <br />
@@ -24,7 +24,7 @@ export class Home extends Component {
         </div>
 
         <div>
-          <div class='pie'>
+          <div className='pie'>
             <img src= {pies}></img>
           </div>
           <br />
@@ -34,23 +34,23 @@ export class Home extends Component {
 
         </div>
         <br />
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-          <div class="col">
-            <div class="card" id='piePic'>
-              <div class="card-body">
-                <h5 class="card-title">Best Sellers</h5>
-                <p class="card-text">Our pies are our specialty! Try a slice or the whole pie! We offer various flavors from classic Apple to Cocunut Cream. Find your favorite today!</p>
+        <div className="row row-cols-1 row-cols-md-2 g-4">
+          <div className="col">
+            <div className="card" id='piePic'>
+              <div className="card-body">
+                <h5 className="card-title">Best Sellers</h5>
+                <p className="card-text">Our pies are our specialty! Try a slice or the whole pie! We offer various flavors from classic Apple to Cocunut Cream. Find your favorite today!</p>
               </div>
-              <img src={slice} class="card-img-bottom" alt="..."></img>
+              <img src={slice} className="card-img-bottom" alt="..."></img>
             </div>
           </div>
-          <div class="col">
-            <div class="card">
-             <div class="card-body">
-              <h5 class="card-title">On Sale</h5>
-              <p class="card-text">Our Muffins are currently marked down! Don't worry, they are still just as delicious at a cheaper price! Act Fast, Sale will end soon</p>
+          <div className="col">
+            <div className="card">
+             <div className="card-body">
+              <h5 className="card-title">On Sale</h5>
+              <p className="card-text">Our Muffins are currently marked down! Don't worry, they are still just as delicious at a cheaper price! Act Fast, Sale will end soon</p>
             </div>
-            <img src={muffin} class="card-img-bottom" alt="..."></img>
+            <img src={muffin} className="card-img-bottom" alt="..."></img>
             </div>
           </div>
         </div>
