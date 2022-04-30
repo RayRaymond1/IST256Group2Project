@@ -19,6 +19,10 @@ h1, p, h2, h3, h5 {
     font-weight: bolder;
 }
 
+.slice {
+    height: 416;
+}
+
 p {
     font-size:x-large;
 }

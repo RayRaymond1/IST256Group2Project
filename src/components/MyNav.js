@@ -12,15 +12,29 @@ export default class MyNav extends Component {
           <Navbar.Brand href='/home'>
             <img src={tiger} width="auto" height="100"></img>
           </Navbar.Brand>
-          <Navbar.Brand>
-            Life of Pie
+          <Navbar.Brand className='title'>
+            <h2 color='rgb(234, 114, 34)'>
+              Life of Pie
+            </h2>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/home">Home</Nav.Link>
-              <Nav.Link href="/products">Products</Nav.Link>
-              <Nav.Link href="/cart">Shopping Cart</Nav.Link>
+              <Nav.Link className='homeText' href="/home">
+                <p className='homeLink' color='rgb(234, 114, 34)'>
+                  Home
+                </p>
+                </Nav.Link>
+              <Nav.Link href="/products">
+              <p color='rgb(234, 114, 34)'>
+                  Products
+                </p>
+              </Nav.Link>
+              <Nav.Link href="/cart">
+              <p className='homeLink' color='rgb(234, 114, 34)'>
+                  Shopping Cart
+                </p>
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

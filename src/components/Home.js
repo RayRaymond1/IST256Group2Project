@@ -41,7 +41,7 @@ export class Home extends Component {
                 <h5 className="card-title">Best Sellers</h5>
                 <p className="card-text">Our pies are our specialty! Try a slice or the whole pie! We offer various flavors from classic Apple to Cocunut Cream. Find your favorite today!</p>
               </div>
-              <img src={slice} className="card-img-bottom" alt="..."></img>
+              <img id='slice' src={slice} class="card-img-bottom" alt="..."></img>
             </div>
           </div>
           <div className="col">
