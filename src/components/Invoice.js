@@ -35,8 +35,8 @@ export default class Invoice extends Component {
                         <Row>
                             <Col sm={9}>
                                 <Stack algin='start' gap={1}>
-                                    <h2>Inovice No#</h2>
-                                    <h5>Inovice Date:</h5>
+                                    <h2 style={{ textAlign: 'left'}}>Inovice No#</h2>
+                                    <h5 style={{ textAlign: 'left'}}>Inovice Date:</h5>
                                 </Stack>
                             </Col>
                             <Col>
