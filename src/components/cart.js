@@ -44,7 +44,7 @@ export default function Cart() {
         cartWithData.map(x => {
             counter++;
             return(
-                <tr key ={x.id}>
+                <tr key ={x.id} className='tableText'>
                     <td>{counter}</td>
                     <td>{x.name}</td>
                     <td>{x.qty}</td>
@@ -75,7 +75,7 @@ export default function Cart() {
         <Container>
             <h2>Shopping Cart</h2>
             <Stack gap={3}>
-                <Table striped bordered className="details" style={{ textAlign: 'center' }}>
+                <Table striped bordered variant='dark' className="details" style={{ textAlign: 'center', color: 'white' }}>
                     <thead>
                         <tr>
                             <th sm={1}>
