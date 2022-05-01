@@ -2,7 +2,7 @@ import myPie from '../assets/pies.json';
 import Product from './product';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Container, Row, Col } from 'react-bootstrap';
-import { Component, React } from 'react';
+import { React } from 'react';
 export default function ProductList(){
 
     const addToCart = function(id, qty){ //friend had taught me how to write this
