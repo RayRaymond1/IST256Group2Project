@@ -6,10 +6,6 @@ let totalAmount = 0;
 var formatter = new Intl.NumberFormat('en-US', { //found out about a numberformatter in JS through stackexchange
     style: 'currency',
     currency: 'USD',
-
-    // These options are needed to round to whole numbers if that's what you want.
-    //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
-    //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
 });
 
 export default function Cart() {
@@ -36,23 +32,26 @@ export default function Cart() {
 
     function listCart()
     {
+        var display;
         if (cartWithData == null)
         {
             return;
-        } else
-        {
-        cartWithData.map(x => {
+        }else{
+        console.log("listing table");
+        console.log(cartWithData);
+        display = cartWithData.map(x => {
             counter++;
             return(
-                <tr key ={x.id} className='tableText'>
+                <tr key ={x.id}>
                     <td>{counter}</td>
                     <td>{x.name}</td>
                     <td>{x.qty}</td>
                     <td>{x.price}</td>
                 </tr>
-            )
+            );
         })
-    }
+       }
+       return display;
     }
 
     function findTotal()
@@ -71,11 +70,12 @@ export default function Cart() {
         totalAmount = formatter.format(totalAmount);
         return totalAmount;
     }
+
     return (
         <Container>
             <h2>Shopping Cart</h2>
             <Stack gap={3}>
-                <Table striped bordered variant='dark' className="details" style={{ textAlign: 'center', color: 'white' }}>
+                <Table bordered className="details" style={{ textAlign: 'center', color: 'white' }}>
                     <thead>
                         <tr>
                             <th sm={1}>
