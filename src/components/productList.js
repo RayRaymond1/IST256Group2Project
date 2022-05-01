@@ -43,7 +43,7 @@ export default function ProductList(){
                     {
                         myPie.map(pie=>{
                             return (
-                                <Col lg={4} key = {pie.id}>
+                                <Col sm={6} md={4} lg={3} key = {pie.id}>
                                     <Product  id={pie.id} name ={pie.name} price = {pie.price} calories = {pie.calories} image = {pie.image} add = {addToCart}/>
                                 </Col>
                             )
