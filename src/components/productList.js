@@ -2,7 +2,7 @@ import myPie from '../assets/pies.json';
 import Product from './product';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Container, Row, Col } from 'react-bootstrap';
-import { Component, React } from 'react';
+import { React } from 'react';
 export default function ProductList(){
 
     const addToCart = function(id, qty){ //friend had taught me how to write this
@@ -43,7 +43,7 @@ export default function ProductList(){
                     {
                         myPie.map(pie=>{
                             return (
-                                <Col lg={4} key = {pie.id}>
+                                <Col sm={6} md={4} lg={3} key = {pie.id}>
                                     <Product  id={pie.id} name ={pie.name} price = {pie.price} calories = {pie.calories} image = {pie.image} add = {addToCart}/>
                                 </Col>
                             )

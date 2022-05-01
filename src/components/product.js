@@ -3,8 +3,8 @@ import { Card, Button } from 'react-bootstrap'
 
 export default function Product(props){
     return <div className='pie'>
-        <Card>
-            <Card.Img variant="top" src= {props.image}/>
+        <Card style={{width:"20rem"}}>
+            <Card.Img variant="top" src= {props.image} width={250} height={300}/>
             <Card.Body>
             <Card.Text>
             {props.name}
