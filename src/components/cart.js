@@ -1,15 +1,19 @@
 import { Container, Row, Col, Stack, Table, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import pies from '../assets/pies.json';
-let totalAmount = 0;
+import { useState } from 'react'
 
+let subTotalAmount = 0; //starting up some values now so i wont have null errors
 var formatter = new Intl.NumberFormat('en-US', { //found out about a numberformatter in JS through stackexchange
     style: 'currency',
     currency: 'USD',
 });
 
 export default function Cart() {
-    function DetailedCart()
+
+    const [currentCart, updateCart] = useState(() => detailedCart());
+
+    function detailedCart() //this imports the cart from sessionStorage so i can display it onto the table
     {
         let cart = JSON.parse(sessionStorage.getItem('cart'));
         let products = pies;
@@ -24,29 +28,55 @@ export default function Cart() {
                                            return currProd;
         });
         sessionStorage.setItem('detailedCart', JSON.stringify(detailedCart));
+        console.log("constructor ran");
         return detailedCart;
         }
     }
-    var cartWithData = DetailedCart();
+
     let counter = 0;
 
-    function listCart()
+   function deleteItem(itemID) //deletes items on the cart page
+    {
+        console.log("delete id " + itemID);
+        console.log(itemID);
+        console.log("old cart " + JSON.stringify(currentCart,null,4));
+        const newCart = currentCart.filter(
+          (item) => { return item.id !== itemID;}
+        )
+        console.log("new cart " +JSON.stringify(newCart,null,4));
+        updateCart(prevCart => prevCart = newCart);
+        console.log("new cart 2" +JSON.stringify(currentCart,null,4));
+        sessionStorage.setItem('detailedCart', JSON.stringify(currentCart));
+
+
+    }
+
+    function addQty(itemID)
+    {
+        let destIdx = currentCart.findIndex(x => x.id === itemID); 
+        currentCart[destIdx].qty += 1;
+        updateCart(currentCart);
+        console.log("cart with data " +JSON.stringify(currentCart,null,4))
+        console.log("new cart " +JSON.stringify(currentCart,null,4));
+
+    }
+    
+
+    function listCart() //this displays the cart by creating new <tr>s (table rows), so paste this into <tbody>
     {
         var display;
-        if (cartWithData == null)
+        if (currentCart == null)
         {
             return;
         }else{
-        console.log("listing table");
-        console.log(cartWithData);
-        display = cartWithData.map(x => {
+        display = currentCart.map(x => {
             counter++;
             return(
                 <tr key ={x.id}>
                     <td>{counter}</td>
                     <td>{x.name}</td>
-                    <td>{x.qty}</td>
-                    <td>{x.price}</td>
+                    <td><Button variant="success" onClick={() => addQty(x.id)}>+</Button>{x.qty}<Button variant="danger" onClick={() => console.log("subtracted")}>-</Button></td>
+                    <td>{x.price} <Button onClick={() => deleteItem(x.id)}>X</Button></td>
                 </tr>
             );
         })
@@ -54,22 +84,22 @@ export default function Cart() {
        return display;
     }
 
-    function findTotal()
+    function findSubtotal() //finds the subtotal
     {
-        if(cartWithData == null)
+        if(currentCart == null)
         {
-        totalAmount = 0;
+        subTotalAmount = 0;
         } else
         {
-            totalAmount= cartWithData.reduce(
+            subTotalAmount= currentCart.reduce(
                 (previousValue, currentValue) => previousValue + (currentValue.price * currentValue.qty)
                 , 0
             )
         }
-        console.log(totalAmount);
-        totalAmount = formatter.format(totalAmount);
-        return totalAmount;
+        subTotalAmount = formatter.format(subTotalAmount);
+        return subTotalAmount;
     }
+
 
     return (
         <Container>
@@ -107,7 +137,7 @@ export default function Cart() {
                                     <p>Subtotal:</p>
                                 </Col>
                                 <Col>
-                                    <p style={{ textAlign: 'right' }}>{findTotal()}</p>
+                                    <p style={{ textAlign: 'right' }}>{findSubtotal()}</p>
                                 </Col>
                             </Row>
                             <Row>
