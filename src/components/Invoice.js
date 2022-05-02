@@ -140,7 +140,7 @@ export default function Invoice(){
                             </Col>
                             <Col>
                                 <Stack algin='end' style={{ textAlign: 'right' }} gap={1}>
-                                    <h2>{totalAmount}</h2>
+                                    <h2>{findTotal()}</h2>
                                     <h5>AMOUNT DUE</h5>
                                 </Stack>
                             </Col>
@@ -176,7 +176,7 @@ export default function Invoice(){
                                         <p>Subtotal:</p>
                                     </Col>
                                     <Col>
-                                        <p style={{ textAlign: 'right' }}>{totalAmount}</p>
+                                        <p style={{ textAlign: 'right' }}>{findSubtotal()}</p>
                                     </Col>
                                 </Row>
                                 <Row>
@@ -184,16 +184,16 @@ export default function Invoice(){
                                         <p>Shipping:</p>
                                     </Col>
                                     <Col>
-                                        <p style={{ textAlign: 'right' }}>0.00</p>
+                                        <p style={{ textAlign: 'right' }}>{formatter.format(0.00)}</p>
                                     </Col>
-                                    <Row>
+                                </Row>
+                                <Row>    
                                 <Col>
                                     <p>Tax:</p>
                                 </Col>
                                 <Col>
                                     <p style={{ textAlign: 'right' }}>{findTax()}</p>
                                 </Col>
-                            </Row>
                                 </Row>
                                 <hr></hr>
                                 <Row>
