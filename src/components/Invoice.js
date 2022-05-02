@@ -134,7 +134,7 @@ export default function Invoice(){
                         <Row>
                             <Col sm={9}>
                                 <Stack algin='start' gap={1}>
-                                    <h2 style={{ textAlign: 'left'}}>Inovice No# 12</h2>
+                                    <h2 style={{ textAlign: 'left'}}>Invoice No# 12</h2>
                                     <h5 style={{ textAlign: 'left'}}>Invoice Date: {new Date().toLocaleDateString()} </h5>
                                 </Stack>
                             </Col>
@@ -146,7 +146,7 @@ export default function Invoice(){
                             </Col>
                         </Row>
                     </Container>
-                    <Table striped bordered className="details" style={{ textAlign: 'center', color: 'white' }}>
+                    <Table bordered className="details" style={{ textAlign: 'center', color: 'white' }}>
                         <thead>
                             <tr>
                                 <th sm={1}>
