@@ -37,12 +37,19 @@ export default function Cart() {
 
    function deleteItem(itemID) //deletes items on the cart page
     {
-        console.log("delete id " + itemID);
-        console.log(itemID);
-        console.log("old cart " + JSON.stringify(currentCart,null,4));
+        let destIdx = currentCart.findIndex(x => x.id === itemID);
+        delete currentCart[destIdx];
+        var i=0;
+        var len = currentCart.length, i;
+        for(i = 0; i < len; i++ )
+            currentCart[i] && currentCart.push(currentCart[i]); 
+
+        currentCart.splice(0 , len);
+        sessionStorage.setItem('cart', JSON.stringify(currentCart));
         const newCart = currentCart.filter(
           (item) => { return item.id !== itemID;}
         )
+
         console.log("new cart " +JSON.stringify(newCart,null,4));
         updateCart(prevCart => prevCart = newCart);
         console.log("new cart 2" +JSON.stringify(currentCart,null,4));
