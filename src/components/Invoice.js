@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { Container, Image, Row, Col, Stack, Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from '../assets/logo.png';
+import tiger from '../images/tiger.png';
 
 
 var formatter = new Intl.NumberFormat('en-US', { //found out about a numberformatter in JS through stackexchange
@@ -22,7 +22,7 @@ export default class Invoice extends Component {
                 <Stack gap={3}>
                     <Row className="header">
                         <Col sm={9}>
-                            <Image src={logo} align='start' />
+                            <Image src={tiger} align='start' />
                         </Col>
                         <Col>
                             <Stack algin='end' style={{ textAlign: 'right' }} gap={3}>
