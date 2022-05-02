@@ -2,6 +2,8 @@ import { Container, Row, Col, Stack, Dropdown, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Checkout(){
+    
+    
     return (
         <Container>
             <Stack gap={2}>
@@ -71,21 +73,21 @@ export default function Checkout(){
 
                             <Row>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="shipping" id="visa" value="option1" checked>
+                                <input class="form-check-input" type="radio" name="shipping" id="freeShip" value="option1">
                                 </input>
-                                <label style={{color:"white"}} class="form-check-label" for="visa">
+                                <label style={{color:"white"}} class="form-check-label" for="freeShip">
                                 Free(7-10 buisness days)
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="shipping" id="masterCard" value="option2"></input>
-                                <label style={{color:"white"}} class="form-check-label" for="masterCard">
+                                <input class="form-check-input" type="radio" name="shipping" id="threeShip" value="option2"></input>
+                                <label style={{color:"white"}} class="form-check-label" for="threeShip">
                                 $3.00(3 day Shipping)
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="shipping" id="discover" value="option2"></input>
-                                <label style={{color:"white"}} class="form-check-label" for="discover">
+                                <input class="form-check-input" type="radio" name="shipping" id="overnight" value="option3"></input>
+                                <label style={{color:"white"}} class="form-check-label" for="overnight">
                                 $10.00(overnight Shipping)
                                 </label>
                             </div>
@@ -143,7 +145,19 @@ export default function Checkout(){
                             </Row>
                             <Row>
                                 <Col style={{ textAlign: 'right' }}>
-                                    <Button href="/invoice" variant="primary" size="lg" >Finalize</Button>
+                                    <Button href="/invoice" variant="primary" size="lg" onClick={() => {
+                                        const radioButtons = document.querySelectorAll('input[name="shipping"]');
+                                        let selectedShip;
+                                        for (const radioButton of radioButtons) {
+                                            if (radioButton.checked) {
+                                                selectedShip = radioButton.value;
+                                                sessionStorage.setItem("ship",selectedShip)
+                                            }
+                                        }
+                                    }
+                    
+                                    }>Finalize</Button>
+                                    
                                 </Col>
                             </Row>
                         </Stack>

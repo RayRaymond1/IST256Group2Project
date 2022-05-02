@@ -20,7 +20,6 @@ var formatter = new Intl.NumberFormat('en-US', { //found out about a numberforma
     //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
 });
 
-let totalAmount = formatter.format(15.00);
 //TODO: CSS Rules for header, summary, details
 export default function Invoice(){
     
@@ -117,6 +116,21 @@ export default function Invoice(){
         total = formatter.format(total);
         return total;
     }
+    function findShip(){
+        if(sessionStorage.getItem("ship")=="option1"){
+            shipping=0.00
+        }
+        if(sessionStorage.getItem("ship")=="option2"){
+            shipping=3.00
+        }
+        if(sessionStorage.getItem("ship")=="option3"){
+            shipping=10.00
+        }
+        else{
+            shipping=0.00
+        }
+        return shipping;
+    }
         return (
             <Container>
                 <Stack gap={3}>
@@ -185,26 +199,26 @@ export default function Invoice(){
                                         <p>Shipping:</p>
                                     </Col>
                                     <Col>
-                                        <p style={{ textAlign: 'right' }}>{formatter.format(0.00)}</p>
+                                        <p style={{ textAlign: 'right' }}>{formatter.format(findShip())}</p>
                                     </Col>
                                 </Row>
                                 <Row>    
-                                <Col>
-                                    <p>Tax:</p>
-                                </Col>
-                                <Col>
-                                    <p style={{ textAlign: 'right' }}>{findTax()}</p>
-                                </Col>
+                                    <Col>
+                                        <p>Tax:</p>
+                                    </Col>
+                                    <Col>
+                                        <p style={{ textAlign: 'right' }}>{findTax()}</p>
+                                    </Col>
                                 </Row>
                                 <hr></hr>
                                 <Row>
-                                <Col>
-                                    <p>Total:</p>
-                                </Col>
-                                <Col>
-                                    <p style={{ textAlign: 'right' }}>{findTotal()}</p>
-                                </Col>
-                            </Row>
+                                    <Col>
+                                        <p>Total:</p>
+                                    </Col>
+                                    <Col>
+                                        <p style={{ textAlign: 'right' }}>{findTotal()}</p>
+                                    </Col>
+                                </Row>
                                 <hr></hr>
                             </Stack>
                         </Col>
