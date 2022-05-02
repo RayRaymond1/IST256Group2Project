@@ -2,6 +2,12 @@ import { Component } from 'react';
 import { Container, Image, Row, Col, Stack, Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import tiger from '../images/tiger.png';
+import pies from '../assets/pies.json';
+import { useState } from 'react'
+let tax = 0;
+let total = 0;
+let subTotalAmount = 0;
+let counter = 0;
 
 
 var formatter = new Intl.NumberFormat('en-US', { //found out about a numberformatter in JS through stackexchange
@@ -15,8 +21,101 @@ var formatter = new Intl.NumberFormat('en-US', { //found out about a numberforma
 
 let totalAmount = formatter.format(15.00);
 //TODO: CSS Rules for header, summary, details
-export default class Invoice extends Component {
-    render() {
+export default function Invoice(){
+    
+    const [currentCart, updateCart] = useState(() => detailedCart());
+
+    function detailedCart() //this imports the cart from sessionStorage so i can display it onto the table
+    {
+        let cart = JSON.parse(sessionStorage.getItem('cart'));
+        let products = pies;
+        if(cart == null)
+        {
+            return;
+        } else
+        {
+        let detailedCart = cart.map( x => {let currProd = products.find(y => x.id == y.id)
+                                           currProd.qty = x.qty;
+
+                                           return currProd;
+        });
+        sessionStorage.setItem('detailedCart', JSON.stringify(detailedCart));
+        console.log("constructor ran");
+        return detailedCart;
+        }
+    }
+
+    function listCart() //this displays the cart by creating new <tr>s (table rows), so paste this into <tbody>
+    {
+        var display;
+        if (currentCart == null)
+        {
+            return;
+        }else{
+        display = currentCart.map(x => {
+            counter++;
+            return(
+                <tr key ={x.id}>
+                    <td>{counter}</td>
+                    <td>{x.name}</td>
+                    <td>{x.qty}</td>
+                    <td>{x.price}</td>
+                </tr>
+            );
+        })
+       }
+       return display;
+    }
+    function findSubtotal() //finds the subtotal
+    {
+        if(currentCart == null)
+        {
+        subTotalAmount = 0;
+        } else
+        {
+            subTotalAmount= currentCart.reduce(
+                (previousValue, currentValue) => previousValue + (currentValue.price * currentValue.qty)
+                , 0
+            )
+        }
+        subTotalAmount = formatter.format(subTotalAmount);
+        return subTotalAmount;
+    }
+
+    function findTax() //finds the subtotal
+    {
+        if(currentCart == null)
+        {
+        subTotalAmount = 0;
+        } else
+        {
+            subTotalAmount= currentCart.reduce(
+                (previousValue, currentValue) => previousValue + (currentValue.price * currentValue.qty)
+                , 0
+            )
+        }
+        tax = subTotalAmount*0.06;
+        tax = formatter.format(tax);
+        return tax;
+    }
+
+    function findTotal() //finds the subtotal
+    {
+        if(currentCart == null)
+        {
+        subTotalAmount = 0;
+        } else
+        {
+            subTotalAmount= currentCart.reduce(
+                (previousValue, currentValue) => previousValue + (currentValue.price * currentValue.qty)
+                , 0
+            )
+        }
+        tax = subTotalAmount*0.06;
+        total= subTotalAmount+tax;
+        total = formatter.format(total);
+        return total;
+    }
         return (
             <Container>
                 <Stack gap={3}>
@@ -27,7 +126,7 @@ export default class Invoice extends Component {
                         <Col>
                             <Stack algin='end' style={{ textAlign: 'right' }} gap={3}>
                                 <h2>INVOICE</h2>
-                                <h5>Group name</h5>
+                                <h5>Group 2</h5>
                             </Stack>
                         </Col>
                     </Row>
@@ -35,8 +134,8 @@ export default class Invoice extends Component {
                         <Row>
                             <Col sm={9}>
                                 <Stack algin='start' gap={1}>
-                                    <h2 style={{ textAlign: 'left'}}>Inovice No#</h2>
-                                    <h5 style={{ textAlign: 'left'}}>Inovice Date:</h5>
+                                    <h2 style={{ textAlign: 'left'}}>Inovice No# 12</h2>
+                                    <h5 style={{ textAlign: 'left'}}>Invoice Date: {new Date().toLocaleDateString()} </h5>
                                 </Stack>
                             </Col>
                             <Col>
@@ -47,7 +146,7 @@ export default class Invoice extends Component {
                             </Col>
                         </Row>
                     </Container>
-                    <Table striped bordered className="details" style={{ textAlign: 'center' }}>
+                    <Table striped bordered className="details" style={{ textAlign: 'center', color: 'white' }}>
                         <thead>
                             <tr>
                                 <th sm={1}>
@@ -65,7 +164,7 @@ export default class Invoice extends Component {
                             </tr>
                         </thead>
                         <tbody className="itemData">
-
+                            {listCart()}
                         </tbody>
                     </Table>
                     <Row>
@@ -87,16 +186,24 @@ export default class Invoice extends Component {
                                     <Col>
                                         <p style={{ textAlign: 'right' }}>0.00</p>
                                     </Col>
+                                    <Row>
+                                <Col>
+                                    <p>Tax:</p>
+                                </Col>
+                                <Col>
+                                    <p style={{ textAlign: 'right' }}>{findTax()}</p>
+                                </Col>
+                            </Row>
                                 </Row>
                                 <hr></hr>
                                 <Row>
-                                    <Col>
-                                        <h3>TOTAL:</h3>
-                                    </Col>
-                                    <Col>
-                                        <h3 style={{ textAlign: 'right' }}>{totalAmount}</h3>
-                                    </Col>
-                                </Row>
+                                <Col>
+                                    <p>Total:</p>
+                                </Col>
+                                <Col>
+                                    <p style={{ textAlign: 'right' }}>{findTotal()}</p>
+                                </Col>
+                            </Row>
                                 <hr></hr>
                             </Stack>
                         </Col>
@@ -105,5 +212,5 @@ export default class Invoice extends Component {
             </Container>
 
         )
-    }
+    
 }

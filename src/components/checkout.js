@@ -1,169 +1,148 @@
-import { Container, Row, Col, Stack, Table, Button } from 'react-bootstrap';
+import { Container, Row, Col, Stack, Dropdown, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import pies from '../assets/pies.json';
-import { useState } from 'react'
 
 export default function Checkout(){
-    let subTotalAmount = 0; //starting up some values now so i wont have null errors
-    let tax = 0;
-    let total = 0;
-    var formatter = new Intl.NumberFormat('en-US', { //found out about a numberformatter in JS through stackexchange
-    style: 'currency',
-    currency: 'USD',
-    });
-    const [currentCart, updateCart] = useState(() => detailedCart());
-
-    function detailedCart() //this imports the cart from sessionStorage so i can display it onto the table
-    {
-        let cart = JSON.parse(sessionStorage.getItem('cart'));
-        let products = pies;
-        if(cart == null)
-        {
-            return;
-        } else
-        {
-        let detailedCart = cart.map( x => {let currProd = products.find(y => x.id == y.id)
-                                           currProd.qty = x.qty;
-
-                                           return currProd;
-        });
-        sessionStorage.setItem('detailedCart', JSON.stringify(detailedCart));
-        console.log("constructor ran");
-        return detailedCart;
-        }
-    }
-
-    let counter = 0; 
-
-    function listCart() //this displays the cart by creating new <tr>s (table rows), so paste this into <tbody>
-    {
-        var display;
-        if (currentCart == null)
-        {
-            return;
-        }else{
-        display = currentCart.map(x => {
-            counter++;
-            return(
-                <tr key ={x.id}>
-                    <td>{counter}</td>
-                    <td>{x.name}</td>
-                    <td>{x.qty}</td>
-                    <td>{x.price}</td>
-                </tr>
-            );
-        })
-       }
-       return display;
-    }
-
-    function findSubtotal() //finds the subtotal
-    {
-        if(currentCart == null)
-        {
-        subTotalAmount = 0;
-        } else
-        {
-            subTotalAmount= currentCart.reduce(
-                (previousValue, currentValue) => previousValue + (currentValue.price * currentValue.qty)
-                , 0
-            )
-        }
-        subTotalAmount = formatter.format(subTotalAmount);
-        return subTotalAmount;
-    }
-    function findTax() //finds the subtotal
-    {
-        if(currentCart == null)
-        {
-        subTotalAmount = 0;
-        } else
-        {
-            subTotalAmount= currentCart.reduce(
-                (previousValue, currentValue) => previousValue + (currentValue.price * currentValue.qty)
-                , 0
-            )
-        }
-        tax = subTotalAmount*0.06;
-        tax = formatter.format(tax);
-        return tax;
-    }
-
-    function findTotal() //finds the subtotal
-    {
-        if(currentCart == null)
-        {
-        subTotalAmount = 0;
-        } else
-        {
-            subTotalAmount= currentCart.reduce(
-                (previousValue, currentValue) => previousValue + (currentValue.price * currentValue.qty)
-                , 0
-            )
-        }
-        tax = subTotalAmount*0.06;
-        total= subTotalAmount+tax;
-        total = formatter.format(total);
-        return total;
-    }
-
-
     return (
         <Container>
-            <Stack gap={3}>
-                <Table bordered className="details" style={{ textAlign: 'center', color: 'white' }}>
-                    <thead>
-                        <tr>
-                            <th sm={1}>
-                                <h5>#</h5>
-                            </th>
-                            <th sm={8}>
-                                <h5>ITEMS & DESCRIPTION</h5>
-                            </th>
-                            <th>
-                                <h5>QUANTITY</h5>
-                            </th>
-                            <th>
-                                <h5>PRICE</h5>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody className="itemData">
-                        {
-                            listCart()
-                        }
-                    </tbody>
-                </Table>
+            <Stack gap={2}>
                 <Row>
-                    <Col sm={8}></Col>
-                    <Col>
-                        <Stack gap={3}>
+                    <Col sm={8}>
+                        <Stack gap={2}>
+                            <Row>
+                                <p style={{textAlign: 'center'}}>Billing Information</p>
+                            </Row>
                             <Row>
                                 <Col>
-                                    <p>Subtotal:</p>
+                                <p style={{textAlign: 'left'}}>First Name</p>
                                 </Col>
                                 <Col>
-                                    <p style={{ textAlign: 'right' }}>{findSubtotal()}</p>
+                                <input style={{textAlign: 'left'}} type="text" id="firstName" name="firstName"></input>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col>
-                                    <p>Tax:</p>
+                                <p style={{textAlign: 'left'}}>Last Name</p>
                                 </Col>
                                 <Col>
-                                    <p style={{ textAlign: 'right' }}>{findTax()}</p>
+                                <input style={{textAlign: 'left'}} type="text" id="lastName" name="lastName"></input>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col>
-                                    <p>Total:</p>
+                                <p style={{textAlign: 'left'}}>Phone Number</p>
                                 </Col>
                                 <Col>
-                                    <p style={{ textAlign: 'right' }}>{findTotal()}</p>
+                                <input style={{textAlign: 'left'}} type="text" id="phone" name="phone"></input>
                                 </Col>
                             </Row>
                             <Row>
-                                <Col style={{ textAlign: 'center' }}>
+                                <Col>
+                                <p style={{textAlign: 'left'}}>Street Address</p>
+                                </Col>
+                                <Col>
+                                <input style={{textAlign: 'left'}} type="text" id="address" name="address"></input>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Stack>
+                                        <p style={{textAlign: 'left'}}>City</p>
+                                        <input style={{textAlign: 'left'}} type="text" id="city" name="city"></input>
+                                    </Stack>
+                                </Col>
+                                <Col>
+                                    <Stack>
+                                        <p style={{textAlign: 'left'}}>State</p>
+                                        <input style={{textAlign: 'left'}} type="text" id="state" name="state"></input>
+                                    </Stack>
+                                </Col>
+                                <Col>
+                                    <Stack>
+                                        <p style={{textAlign: 'left'}}>Zip Code</p>
+                                        <input style={{textAlign: 'left'}} type="text" id="state" name="state"></input>
+                                    </Stack>
+                                </Col>
+                            </Row>
+                            <br/>
+
+                            <Row>
+                                <p style={{textAlign: 'center'}}>Shipping Method</p>
+                            </Row>
+
+                            <Row>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="shipping" id="visa" value="option1" checked>
+                                </input>
+                                <label style={{color:"white"}} class="form-check-label" for="visa">
+                                Free(7-10 buisness days)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="shipping" id="masterCard" value="option2"></input>
+                                <label style={{color:"white"}} class="form-check-label" for="masterCard">
+                                $3.00(3 day Shipping)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="shipping" id="discover" value="option2"></input>
+                                <label style={{color:"white"}} class="form-check-label" for="discover">
+                                $10.00(overnight Shipping)
+                                </label>
+                            </div>
+                                
+                            </Row>
+                            <br/>
+
+                            <Row>
+                                <p style={{textAlign: 'center'}}>Payment Method</p>
+                            </Row>
+
+                            <Row>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="visa" value="option1" checked></input>
+                                <label style={{color:"white"}} class="form-check-label" for="visa">
+                                Visa
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="masterCard" value="option2"></input>
+                                <label style={{color:"white"}} class="form-check-label" for="masterCard">
+                                MasterCard
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="discover" value="option2"></input>
+                                <label style={{color:"white"}} class="form-check-label" for="discover">
+                                Discover
+                                </label>
+                            </div>
+                                
+                            </Row>
+                            <Row>
+                                <Stack>
+                                    <p style={{textAlign: 'left'}}>Card Number</p>
+                                    <input style={{textAlign: 'left'}} type="text" id="cardNum" name="cardNum"></input>
+                                </Stack>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Stack>
+                                        <p style={{textAlign: 'left'}}>Expiration Date</p>
+                                        <Stack gap={3} direction ="horizontal">
+                                        <input style={{textAlign: 'left'}} type="text" id="expirationMonth" name="expirationMonth"></input>
+                                        <input style={{textAlign: 'left'}} type="text" id="expirationYear" name="expirationYear"></input>
+                                        </Stack>
+                                    </Stack>
+                                </Col>
+                                <Col>
+                                <Stack>
+                                    <p style={{textAlign: 'left'}}>Security Code</p>
+                                    <input length = {3} style={{textAlign: 'left'}} type="text" id="state" name="state"></input>
+                                </Stack>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col style={{ textAlign: 'right' }}>
                                     <Button href="/invoice" variant="primary" size="lg" >Finalize</Button>
                                 </Col>
                             </Row>

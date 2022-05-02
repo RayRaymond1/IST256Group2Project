@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import pies from '../assets/pies.json';
 import { useState } from 'react'
 
+let tax = 0;
+let total = 0;
 let subTotalAmount = 0; //starting up some values now so i wont have null errors
 var formatter = new Intl.NumberFormat('en-US', { //found out about a numberformatter in JS through stackexchange
     style: 'currency',
@@ -132,6 +134,41 @@ export default function Cart() {
         return subTotalAmount;
     }
 
+    function findTax() //finds the subtotal
+    {
+        if(currentCart == null)
+        {
+        subTotalAmount = 0;
+        } else
+        {
+            subTotalAmount= currentCart.reduce(
+                (previousValue, currentValue) => previousValue + (currentValue.price * currentValue.qty)
+                , 0
+            )
+        }
+        tax = subTotalAmount*0.06;
+        tax = formatter.format(tax);
+        return tax;
+    }
+
+    function findTotal() //finds the subtotal
+    {
+        if(currentCart == null)
+        {
+        subTotalAmount = 0;
+        } else
+        {
+            subTotalAmount= currentCart.reduce(
+                (previousValue, currentValue) => previousValue + (currentValue.price * currentValue.qty)
+                , 0
+            )
+        }
+        tax = subTotalAmount*0.06;
+        total= subTotalAmount+tax;
+        total = formatter.format(total);
+        return total;
+    }
+
 
     return (
         <Container>
@@ -172,6 +209,23 @@ export default function Cart() {
                                     <p style={{ textAlign: 'right' }}>{findSubtotal()}</p>
                                 </Col>
                             </Row>
+                            <Row>
+                                <Col>
+                                    <p>Tax:</p>
+                                </Col>
+                                <Col>
+                                    <p style={{ textAlign: 'right' }}>{findTax()}</p>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <p>Total:</p>
+                                </Col>
+                                <Col>
+                                    <p style={{ textAlign: 'right' }}>{findTotal()}</p>
+                                </Col>
+                            </Row>
+                            
                             <Row>
                                 <Col style={{ textAlign: 'center' }}>
                                     <Button href="/checkout" variant="primary" size="lg" >Checkout</Button>
