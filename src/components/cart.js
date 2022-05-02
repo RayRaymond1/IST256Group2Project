@@ -55,9 +55,34 @@ export default function Cart() {
     {
         let destIdx = currentCart.findIndex(x => x.id === itemID); 
         currentCart[destIdx].qty += 1;
-        updateCart(currentCart);
+        sessionStorage.setItem('cart', JSON.stringify(currentCart));
+        const newCart = currentCart.filter(
+            (item) => { return item.id}
+          )
+        updateCart(prevCart => prevCart = newCart);
         console.log("cart with data " +JSON.stringify(currentCart,null,4))
         console.log("new cart " +JSON.stringify(currentCart,null,4));
+        sessionStorage.setItem('detailedCart', JSON.stringify(currentCart));
+
+    }
+
+    function subQty(itemID)
+    {
+        let destIdx = currentCart.findIndex(x => x.id === itemID); 
+        if(currentCart[destIdx].qty>1){
+            currentCart[destIdx].qty -= 1;
+        }
+        else{
+            deleteItem(itemID)
+        }
+        const newCart = currentCart.filter(
+            (item) => { return item.id}
+          )
+        sessionStorage.setItem('cart', JSON.stringify(currentCart));
+        updateCart(prevCart => prevCart = newCart);
+        console.log("cart with data " +JSON.stringify(currentCart,null,4))
+        console.log("new cart " +JSON.stringify(currentCart,null,4));
+        sessionStorage.setItem('detailedCart', JSON.stringify(currentCart));
 
     }
     
@@ -75,7 +100,7 @@ export default function Cart() {
                 <tr key ={x.id}>
                     <td>{counter}</td>
                     <td>{x.name}</td>
-                    <td><Button variant="success" onClick={() => addQty(x.id)}>+</Button>{x.qty}<Button variant="danger" onClick={() => console.log("subtracted")}>-</Button></td>
+                    <td><Button variant="success" onClick={() => addQty(x.id)}>+</Button>{x.qty}<Button variant="danger" onClick={() => subQty(x.id)}>-</Button></td>
                     <td>{x.price} <Button onClick={() => deleteItem(x.id)}>X</Button></td>
                 </tr>
             );
