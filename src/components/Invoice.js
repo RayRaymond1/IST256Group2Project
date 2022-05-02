@@ -8,6 +8,7 @@ let tax = 0;
 let total = 0;
 let subTotalAmount = 0;
 let counter = 0;
+let shipping = 0;
 
 
 var formatter = new Intl.NumberFormat('en-US', { //found out about a numberformatter in JS through stackexchange
@@ -112,7 +113,7 @@ export default function Invoice(){
             )
         }
         tax = subTotalAmount*0.06;
-        total= subTotalAmount+tax;
+        total= subTotalAmount+tax+shipping;
         total = formatter.format(total);
         return total;
     }
