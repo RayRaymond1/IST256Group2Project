@@ -16,7 +16,7 @@ export default function Checkout(){
                                 <p style={{textAlign: 'left'}}>First Name</p>
                                 </Col>
                                 <Col>
-                                <input style={{textAlign: 'left'}} type="text" id="firstName" name="firstName"></input>
+                                <input style={{textAlign: 'left', backgroundColor: "white"}} type="text" id="firstName" name="firstName"></input>
                                 </Col>
                             </Row>
                             <Row>
@@ -24,7 +24,7 @@ export default function Checkout(){
                                 <p style={{textAlign: 'left'}}>Last Name</p>
                                 </Col>
                                 <Col>
-                                <input style={{textAlign: 'left'}} type="text" id="lastName" name="lastName"></input>
+                                <input style={{textAlign: 'left', backgroundColor: "white"}} type="text" id="lastName" name="lastName"></input>
                                 </Col>
                             </Row>
                             <Row>
@@ -32,7 +32,7 @@ export default function Checkout(){
                                 <p style={{textAlign: 'left'}}>Phone Number</p>
                                 </Col>
                                 <Col>
-                                <input style={{textAlign: 'left'}} type="text" id="phone" name="phone"></input>
+                                <input style={{textAlign: 'left', backgroundColor: "white"}} type="text" id="phone" name="phone"></input>
                                 </Col>
                             </Row>
                             <Row>
@@ -40,26 +40,26 @@ export default function Checkout(){
                                 <p style={{textAlign: 'left'}}>Street Address</p>
                                 </Col>
                                 <Col>
-                                <input style={{textAlign: 'left'}} type="text" id="address" name="address"></input>
+                                <input style={{textAlign: 'left', backgroundColor: "white"}} type="text" id="address" name="address"></input>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col>
                                     <Stack>
                                         <p style={{textAlign: 'left'}}>City</p>
-                                        <input style={{textAlign: 'left'}} type="text" id="city" name="city"></input>
+                                        <input style={{textAlign: 'left', backgroundColor: "white"}} type="text" id="city" name="city"></input>
                                     </Stack>
                                 </Col>
                                 <Col>
                                     <Stack>
                                         <p style={{textAlign: 'left'}}>State</p>
-                                        <input style={{textAlign: 'left'}} type="text" id="state" name="state"></input>
+                                        <input style={{textAlign: 'left', backgroundColor: "white"}} type="text" id="state" name="state"></input>
                                     </Stack>
                                 </Col>
                                 <Col>
                                     <Stack>
                                         <p style={{textAlign: 'left'}}>Zip Code</p>
-                                        <input style={{textAlign: 'left'}} type="text" id="state" name="state"></input>
+                                        <input style={{textAlign: 'left', backgroundColor: "white"}} type="text" id="state" name="state"></input>
                                     </Stack>
                                 </Col>
                             </Row>
@@ -121,7 +121,7 @@ export default function Checkout(){
                             <Row>
                                 <Stack>
                                     <p style={{textAlign: 'left'}}>Card Number</p>
-                                    <input style={{textAlign: 'left'}} type="text" id="cardNum" name="cardNum"></input>
+                                    <input style={{textAlign: 'left', backgroundColor: "white"}} type="text" id="cardNum" name="cardNum"></input>
                                 </Stack>
                             </Row>
                             <Row>
@@ -129,15 +129,15 @@ export default function Checkout(){
                                     <Stack>
                                         <p style={{textAlign: 'left'}}>Expiration Date</p>
                                         <Stack gap={3} direction ="horizontal">
-                                        <input style={{textAlign: 'left'}} type="text" id="expirationMonth" name="expirationMonth"></input>
-                                        <input style={{textAlign: 'left'}} type="text" id="expirationYear" name="expirationYear"></input>
+                                        <input style={{textAlign: 'left', backgroundColor: "white"}} type="text" id="expirationMonth" name="expirationMonth"></input>
+                                        <input style={{textAlign: 'left', backgroundColor: "white"}} type="text" id="expirationYear" name="expirationYear"></input>
                                         </Stack>
                                     </Stack>
                                 </Col>
                                 <Col>
                                 <Stack>
                                     <p style={{textAlign: 'left'}}>Security Code</p>
-                                    <input length = {3} style={{textAlign: 'left'}} type="text" id="state" name="state"></input>
+                                    <input length = {3} style={{textAlign: 'left', backgroundColor: "white"}} type="text" id="state" name="state"></input>
                                 </Stack>
                                 </Col>
                             </Row>
