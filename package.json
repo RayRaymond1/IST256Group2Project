@@ -1,7 +1,7 @@
 {
   "name": "react-app",
   "version": "0.1.0",
-  "homepage": "http://rayraymond1.github.io/IST256Group2Project",
+  "homepage": "https://rayraymond1.github.io/IST256Group2Project/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
