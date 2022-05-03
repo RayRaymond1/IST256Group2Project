@@ -12,7 +12,7 @@ function App() {
   return (
     <div className='App'> 
       <MyNav />
-        <BrowserRouter basename="/react-app">
+        <BrowserRouter basename="/IST256Group2Project">
           <Routes>
             <Route path='/products' element={<ProductList />} />
             <Route path='' element={<Home />} />
